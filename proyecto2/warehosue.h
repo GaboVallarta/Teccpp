@@ -15,7 +15,7 @@ class Warehouse{
     ~Warehouse();
     void setSize();
     void seeProducts();
-    void buy(ShoppingCart& ShoppingCart);
+    void buy(ShoppingCart& cart);
     bool checkId(string id);
     bool checkAvailability(string id,int num);
     WarehouseProduct getProduct(string id);

@@ -48,45 +48,45 @@ WarehouseProduct Warehouse::getProduct(string id){
     return this->products[0];
 }
 
-// void Warehouse::buy(ShoppingCart& shoppingCart){
-//     string choice;
-//     int num;
-//     int confirmation;
-//     cout<<"Which product do you want? (Enter the id)"<<endl;
-//     this->seeProducts();
-//     getline(cin,choice);
-//     while(true){
-//     if(this->checkId(choice)){
-//         cout<<"Product was found, how mucho do you want to buy?"<<endl;
-//         cin>>num;
-//         if(this->checkAvailability(choice,num)){
-//             if(shoppingCart.getSize()<20){
-//                 cout<<num<<" "<<this->getProduct(choice).getName()<<"(s), is this correct?"<<endl<<"1. yes"<<endl<<"2. no"<<endl;
-//                 cin>>confirmation;
-//                 if(confirmation==1){
-//                     shoppingCart.addProduct(this->getProduct(choice),num);
-//                     return;
-//                 }else if(confirmation==2){
-//                     //regresa
-//                 }else{
-//                     cout<<"It is not a valid answere"<<endl;
-//                 }
-//             }else{
-//                 cout<<"There is not enough space on your cart"<<endl;
-//                 //regresa
-//             }
+void Warehouse::buy(ShoppingCart& shoppingCart){
+    string choice;
+    int num;
+    int confirmation;
+    cout<<"Which product do you want? (Enter the id)"<<endl;
+    this->seeProducts();
+    getline(cin,choice);
+    while(true){
+    if(this->checkId(choice)){
+        cout<<"Product was found, how mucho do you want to buy?"<<endl;
+        cin>>num;
+        if(this->checkAvailability(choice,num)){
+            if(shoppingCart.getSize()<20){
+                cout<<num<<" "<<this->getProduct(choice).getName()<<"(s), is this correct?"<<endl<<"1. yes"<<endl<<"2. no"<<endl;
+                cin>>confirmation;
+                if(confirmation==1){
+                    shoppingCart.addProduct(this->getProduct(choice),num);
+                    return;
+                }else if(confirmation==2){
+                    //regresa
+                }else{
+                    cout<<"It is not a valid answere"<<endl;
+                }
+            }else{
+                cout<<"There is not enough space on your cart"<<endl;
+                //regresa
+            }
 
-//         }else{
-//             cout<<"There is not enought stock, choose another value"<<endl;
-//             //regresa
-//         }
+        }else{
+            cout<<"There is not enought stock, choose another value"<<endl;
+            //regresa
+        }
         
 
-//     }else{
-//         cout<<"Product was not found :("<<endl;
-//         //regresa
-//     }
-//    }
+    }else{
+        cout<<"Product was not found :("<<endl;
+        //regresa
+    }
+   }
 
-// }
+}
 

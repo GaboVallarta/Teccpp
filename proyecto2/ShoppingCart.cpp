@@ -1,7 +1,7 @@
 
 #include "ShoppingCart.h"
 #include "warehosue.h"
-//#include "CartProduct.h"
+#include "CartProduct.h"
 ShoppingCart::ShoppingCart(){
     this->size=0;
 }
@@ -17,15 +17,15 @@ ShoppingCart::ShoppingCart(string client){
 //     }
 // }
 
-// void ShoppingCart::addProduct(WarehouseProduct product,int amount){
-//     CartProduct newProduct(product.getId(),product.getName(),product.getPrice(),amount);
-//     this->products[size]=newProduct;
-//     size++;
-// }
+void ShoppingCart::addProduct(WarehouseProduct product,int amount){
+    CartProduct newProduct(product.getId(),product.getName(),product.getPrice(),amount);
+    this->products[size]=newProduct;
+    size++;
+}
 
-// int ShoppingCart::getSize(){
-//     return size;
-// }
+int ShoppingCart::getSize(){
+    return size;
+}
 
 // string ShoppingCart::getClient(){
 //     return this->client;
