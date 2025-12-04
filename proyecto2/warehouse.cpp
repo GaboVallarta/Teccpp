@@ -42,11 +42,12 @@ Warehouse::Warehouse()
 }
 
 void Warehouse::seeProducts()
-{ // NO TESTEADO
+{ 
+    cout<<"id"<<"\t"<<"name"<<"\t"<<"price"<<"\t\t"<<"stock"<<endl<<endl;
 
     for (int i = 0; i < size; i++)
     {
-        cout << this->products[i].getId() << "," << this->products[i].getName() << "," << this->products[i].getPrice() << "," << this->products[i].getStock() << endl;
+        cout << this->products[i].getId() << "\t" << this->products[i].getName() << "\t$" << this->products[i].getPrice() << "\t\t" << this->products[i].getStock() << endl;
     }
 }
 void Warehouse::setSize()

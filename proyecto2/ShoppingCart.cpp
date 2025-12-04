@@ -2,6 +2,7 @@
 #include "ShoppingCart.h"
 #include "warehosue.h"
 #include "CartProduct.h"
+
 ShoppingCart::ShoppingCart()
 {
     this->size = 0;
@@ -48,10 +49,10 @@ string ShoppingCart::getClient()
 
 void ShoppingCart::showProducts()
 {
-
+    cout<<"\t# products"<<"\t"<<"id"<<"\t"<<"name"<<"\t"<<"price"<<endl<<endl;
     for (int i = 0; i < size; i++)
     {
-        cout << this->products[i].getAmount() << "\t" << this->products[i].getId() << "\t" << this->products[i].getName() << "\t" << this->products[i].getPrice() << endl;
+        cout << this->products[i].getAmount() << "\t" << this->products[i].getId() << "\t" << this->products[i].getName() << "\t$" << this->products[i].getPrice() << endl;
     }
     cout << "The total price is: " << this->total() <<"$"<< endl;
 }
@@ -154,7 +155,6 @@ void ShoppingCart::pay(Warehouse &warehouse)
 {
 
     this->showProducts();
-    cout << "The total price is: " << this->total() << endl;
     for (int i = 0; i < size; i++)
     {
         this->products[i].setAmount(0);
