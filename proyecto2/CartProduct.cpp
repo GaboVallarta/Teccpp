@@ -37,8 +37,7 @@ CartProduct::~CartProduct(){
 }
 
 void CartProduct::setAmount(int amount){
-    cout<<"se modificó "<<this->amount<<" por ";
     this->amount=amount;
-    cout<<this->amount<<endl;
+    
 }
 
