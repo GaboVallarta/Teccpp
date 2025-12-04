@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <fstream>
+#include <sstream>
 #include "WarehouseProduct.h"
 #include "ShoppingCart.h"
 using namespace std;
@@ -19,4 +21,5 @@ class Warehouse{
     bool checkId(string id);
     bool checkAvailability(string id,int num);
     WarehouseProduct getProduct(string id);
+    int getNumId(string id);
 };

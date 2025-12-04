@@ -1,5 +1,5 @@
 #include "WarehouseProduct.h"
-
+#include <iostream>
 WarehouseProduct::WarehouseProduct(){
     this->id="Null";
     this->name="Default";
@@ -27,4 +27,11 @@ string WarehouseProduct::getId(){
 
 WarehouseProduct::~WarehouseProduct(){
 
+}
+
+void WarehouseProduct::setAmount(int amount){
+    cout<<"antes: "<< this->stock<<endl;
+    this->stock-=amount;
+    cout<<"despues: "<<this->stock<<endl;
+    
 }

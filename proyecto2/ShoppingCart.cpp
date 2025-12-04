@@ -10,12 +10,13 @@ ShoppingCart::ShoppingCart(string client){
     this->size=0;
 }
 
-// float ShoppingCart::total(){
-//     float result=0;
-//     for(int i=0;i<size;i++){
-//         result+=products[size].getPrice();
-//     }
-// }
+float ShoppingCart::total(){
+    float result=0;
+    for(int i=0;i<size;i++){
+        result+=products[size].getPrice();
+    }
+    return result;
+}
 
 void ShoppingCart::addProduct(WarehouseProduct product,int amount){
     CartProduct newProduct(product.getId(),product.getName(),product.getPrice(),amount);
@@ -27,50 +28,52 @@ int ShoppingCart::getSize(){
     return size;
 }
 
-// string ShoppingCart::getClient(){
-//     return this->client;
-// }
+string ShoppingCart::getClient(){
+    return this->client;
+}
 
-// void ShoppingCart::showProducts(){
-//     for(int i=0;i<size;i++){
-//         cout<<this->products[i].getId()<<","<<this->products[i].getName()<<","<<this->products->getPrice()<<endl;
+void ShoppingCart::showProducts(){
+    for(int i=0;i<size;i++){
+        cout<<this->products[i].getAmount()<<" "<<this->products[i].getId()<<","<<this->products[i].getName()<<","<<this->products->getPrice()<<endl;
 
-//     }
-//     cout<<"The total price is: "<<this->totalPrice()<<endl;
-// }
+    }
+    cout<<"The total price is: "<<this->totalPrice()<<endl;
+}
 
-// bool ShoppingCart::searchProduct(string id){
-//     for(int i=0;i<size;i++){
-//         if(products[i].getId()==id) return true;
-//     }
-//     return false;
-// }
+bool ShoppingCart::searchProduct(string id){
+    for(int i=0;i<size;i++){
+        if(products[i].getId()==id) return true;
+    }
+    return false;
+}
 
-// float ShoppingCart::totalPrice(){
-//     float sum=0.0;
-//     for(int i=0;i<this->size;i++){
-//         sum+=products[i].getPrice();
-//     }
-//     return sum;
-// }
+float ShoppingCart::totalPrice(){
+    float sum=0.0;
+    for(int i=0;i<this->size;i++){
+        sum+=products[i].getPrice();
+    }
+    return sum;
+}
 
-// CartProduct ShoppingCart::getProduct(string id){
-//     for(int i=0;i<size;i++){
-//         if(this->products[i].getId()==id){
-//             return this->products[i];
-//         }
-//     }
+CartProduct ShoppingCart::getProduct(string id){
+    for(int i=0;i<size;i++){
+        if(this->products[i].getId()==id){
+            return this->products[i];
+        }
+    }
+    return products[0];// primero checa y luego manda a llamar la función
     
-// }
+}
 
-// int ShoppingCart::getProductNum(string id){
-//     for(int i=0;i<size;i++){
-//         if(this->products[i].getId()==id){
-//             return i;
-//         }
-//     }
+int ShoppingCart::getProductNum(string id){
+    for(int i=0;i<size;i++){
+        if(this->products[i].getId()==id){
+            return i;
+        }
+    }
+    return -1;
   
-// }
+}
 
 
 // void ShoppingCart::edit(Warehouse& warehouse){
@@ -110,9 +113,11 @@ int ShoppingCart::getSize(){
 
 // void ShoppingCart::pay(Warehouse& warehouse){
 
+//     const Warehouse ware= warehouse;
+
 //     this->showProducts();
 //     cout<<"The total price is: "<<this->totalPrice()<<endl;
-//     fill(begin(this->products), end(this->products),Warehouse());
+//     fill(begin(this->products), end(this->products),ware);
 // }
 
 ShoppingCart::~ShoppingCart(){

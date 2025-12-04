@@ -4,6 +4,8 @@
 using namespace std;
 
 
+
+
 int main(){
 
     Warehouse soriana;
@@ -27,8 +29,8 @@ int main(){
             break;
 
             case 3:
-                //cout<<cart.getClient()<<"'s cart:"<<endl;
-                //cart.showProducts();
+                cout<<cart.getClient()<<"'s cart:"<<endl;
+                cart.showProducts();
             break;
 
             case 4:
@@ -36,7 +38,7 @@ int main(){
             break;
 
             case 5:
-                //cart.pay(soriana);
+               // cart.pay(soriana);
             break;
             
             case 6:
