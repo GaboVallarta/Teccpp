@@ -24,10 +24,10 @@ class ShoppingCart{
     string getClient();
     void addProduct(WarehouseProduct product, int amount);
     void showProducts();
-    float totalPrice();
+    
     void edit(Warehouse& warehouse);
     bool searchProduct(string id);
-    CartProduct getProduct(string id);
+    CartProduct& getProduct(string id);
     int getProductNum(string id);
     void pay(Warehouse& warehouse);
 };

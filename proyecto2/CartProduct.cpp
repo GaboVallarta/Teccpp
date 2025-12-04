@@ -1,5 +1,6 @@
 #include "CartProduct.h"
-
+#include <iostream>
+using namespace std;
 CartProduct::CartProduct(string id, string name, float price, int amount){
     this->id=id;
     this->name=name;
@@ -25,14 +26,19 @@ int CartProduct::getAmount(){
     return this->amount;
 }
 
-// float CartProduct::subtotal(){
-//     float sum=0;
-//     for(int i=0;i<this->amount;i++){
-
-//     }
-// }
+float CartProduct::subtotal(){
+    float sum=this->amount*this->price;
+    return sum;
+}
 
 
 CartProduct::~CartProduct(){
     
 }
+
+void CartProduct::setAmount(int amount){
+    cout<<"se modificó "<<this->amount<<" por ";
+    this->amount=amount;
+    cout<<this->amount<<endl;
+}
+

@@ -20,6 +20,6 @@ class Warehouse{
     void buy(ShoppingCart& cart);
     bool checkId(string id);
     bool checkAvailability(string id,int num);
-    WarehouseProduct getProduct(string id);
+    WarehouseProduct& getProduct(string id);
     int getNumId(string id);
 };

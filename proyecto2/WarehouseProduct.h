@@ -17,6 +17,7 @@ class WarehouseProduct{
         string getId();
         float getStock();
         void setAmount(int amount);
+        void newAmount(int amount);
         
         
 };

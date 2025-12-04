@@ -17,5 +17,6 @@ class CartProduct{
     string getName();
     float getPrice();
     int getAmount();
+    void setAmount(int amount);
     
 };

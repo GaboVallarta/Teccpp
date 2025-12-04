@@ -30,8 +30,14 @@ WarehouseProduct::~WarehouseProduct(){
 }
 
 void WarehouseProduct::setAmount(int amount){
-    cout<<"antes: "<< this->stock<<endl;
+    
     this->stock-=amount;
-    cout<<"despues: "<<this->stock<<endl;
+    
+    
+}
+void WarehouseProduct::newAmount(int amount){
+
+  
+    this->stock=amount;
     
 }

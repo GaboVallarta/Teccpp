@@ -34,7 +34,7 @@ int main(){
             break;
 
             case 4:
-                //cart.edit(soriana);
+                cart.edit(soriana);
             break;
 
             case 5:

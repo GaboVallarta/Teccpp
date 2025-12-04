@@ -28,7 +28,7 @@ Warehouse::Warehouse()
             getline(stream, priceStr, ',');
             getline(stream, amountStr, ',');
 
-            // cout<<"LINE BRAK DOWN: "<<idStr<< "|"<<nameStr<<"|"<<priceStr<<"|"<<amountStr<<endl;
+             //cout<<"LINE BRAK DOWN: "<<idStr<< "|"<<nameStr<<"|"<<priceStr<<"|"<<amountStr<<endl;
 
             float price = stof(priceStr);
             int amount = stoi(amountStr);
@@ -79,7 +79,7 @@ bool Warehouse::checkAvailability(string id, int num)
     return false;
 }
 
-WarehouseProduct Warehouse::getProduct(string id)
+WarehouseProduct& Warehouse::getProduct(string id)
 {
     for (int i = 0; i < this->size; i++)
     {
@@ -95,7 +95,7 @@ WarehouseProduct Warehouse::getProduct(string id)
 void Warehouse::buy(ShoppingCart &shoppingCart)
 {
     string choice;
-    int num;
+    int num=0;
     int confirmation;
 
     while (true)
@@ -106,7 +106,7 @@ void Warehouse::buy(ShoppingCart &shoppingCart)
         bool numProduct = true;
         while (numProduct)
         {
-            if (this->checkId(choice))
+            if (this->checkId(choice) && this->checkAvailability(choice,1))
             {
                 cout << "Product was found, how mucho do you want to buy?" << endl;
                 cin >> num;
@@ -124,9 +124,8 @@ void Warehouse::buy(ShoppingCart &shoppingCart)
                             shoppingCart.addProduct(this->getProduct(choice), num);
                             
                             this->products[this->getNumId(choice)].setAmount(num);
-                            cout<<"antes en la clase: "<<this->products[this->getNumId(choice)].getStock()<<endl;;
+                            
                             numProduct = false;
-                            cout<<"despues en la clase: "<<this->products[this->getNumId(choice)].getStock()<<endl;;
 
                             return;
                         }
@@ -153,13 +152,16 @@ void Warehouse::buy(ShoppingCart &shoppingCart)
                     // regresa
                 }
             }
-            else
+            else if(!this->checkId(choice))
             {
                 cout << "Product was not found :(" << endl;
                 cout << "Which product do you want? (Enter the id)" << endl;
                 this->seeProducts();
                 getline(cin, choice);
                 // regresa
+            }else{
+                cout<<"There are no products left"<<endl;
+                return;
             }
         }
     }

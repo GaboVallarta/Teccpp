@@ -13,7 +13,7 @@ ShoppingCart::ShoppingCart(string client){
 float ShoppingCart::total(){
     float result=0;
     for(int i=0;i<size;i++){
-        result+=products[size].getPrice();
+        result+=products[i].subtotal();
     }
     return result;
 }
@@ -34,10 +34,10 @@ string ShoppingCart::getClient(){
 
 void ShoppingCart::showProducts(){
     for(int i=0;i<size;i++){
-        cout<<this->products[i].getAmount()<<" "<<this->products[i].getId()<<","<<this->products[i].getName()<<","<<this->products->getPrice()<<endl;
+        cout<<this->products[i].getAmount()<<" "<<this->products[i].getId()<<","<<this->products[i].getName()<<","<<this->products[i].getPrice()<<endl;
 
     }
-    cout<<"The total price is: "<<this->totalPrice()<<endl;
+    cout<<"The total price is: "<<this->total()<<endl;
 }
 
 bool ShoppingCart::searchProduct(string id){
@@ -47,15 +47,9 @@ bool ShoppingCart::searchProduct(string id){
     return false;
 }
 
-float ShoppingCart::totalPrice(){
-    float sum=0.0;
-    for(int i=0;i<this->size;i++){
-        sum+=products[i].getPrice();
-    }
-    return sum;
-}
 
-CartProduct ShoppingCart::getProduct(string id){
+
+CartProduct& ShoppingCart::getProduct(string id){
     for(int i=0;i<size;i++){
         if(this->products[i].getId()==id){
             return this->products[i];
@@ -76,40 +70,52 @@ int ShoppingCart::getProductNum(string id){
 }
 
 
-// void ShoppingCart::edit(Warehouse& warehouse){
-//     string id;
-//     int choice;
-//     string idw;
-//     int amountw;
-//     while(true){
-//         cout<<"Cart products: "<<endl;
-//         this->showProducts();
-//         cout<<"Choose an id to edit it"<<endl;
-//         getline(cin,id);
-//         cout<<id<<", Is this correct?"<<endl;
-//         cin>>choice;
-//         if(choice==1){
-//             if(this->searchProduct(id)){
-//                 cout<<"Enter the new id and amount"<<endl;
-//                 getline(cin,idw);
-//                 cin>>amountw;
-//                 if(warehouse.checkId(idw) && warehouse.checkAvailability(idw,amountw)){
-//                     CartProduct newCartProduct(idw, warehouse.getProduct(idw).getName(),warehouse.getProduct(idw).getPrice(),amountw);
-//                     this->products[this->getProductNum(idw)]=newCartProduct;
-//                     return;
-//                 }
+void ShoppingCart::edit(Warehouse& warehouse){
+    if(this->size==0){
+        cout<<"no products on the cart"<<endl;
+        return;
+    }
+    string id;
+    int choice, amountw;
+    while(true){
+        cout<<"Cart products: "<<endl;
+        this->showProducts();
+        cout<<"Choose an id to edit it"<<endl;
+        cin>>id;
+        cout<<id<<", Is this correct?"<<endl<<"1. yes"<<endl<<"2. no"<<endl;
+        cin>>choice;
+        if(choice==1){
+            if(this->searchProduct(id)){
+                cout<<"Enter the new amount"<<endl;
+                cin>>amountw;
+                int max=this->getProduct(id).getAmount()+warehouse.getProduct(id).getStock();
+                cout<<"Maximum amount for the product: "<<max<<endl;
+                if(amountw<=max && amountw>=0){
 
-//             }else{
-//                 cout<<"It was not possible"<<endl;
-//             }
-//         }else if(choice==2){
-//             cout<<"ok"<<endl;
-//         }else{
-//             cout<<"it is not a valid option"<<endl;
-//         }
+                    int newAmount=max-amountw;
+                    
+                    this->getProduct(id).setAmount(amountw);
+                    warehouse.getProduct(id).newAmount(newAmount);
+                    cout<<"New amount for "<<warehouse.getProduct(id).getName()<<": "<<this->getProduct(id).getAmount()<<endl;
+                    cout<<"Available in the warehouse: "<<warehouse.getProduct(id).getStock()<<endl;
+                    
+                    
+                    return;
+                }else{
+                    cout<<"Not valid quantity"<<endl;
+                    
+                }
+            }else{
+                cout<<"It was not possible"<<endl;
+            }
+        }else if(choice==2){
+            cout<<"ok"<<endl;
+        }else{
+            cout<<"it is not a valid option"<<endl;
+        }
     
-//     }
-// }
+    }
+}
 
 // void ShoppingCart::pay(Warehouse& warehouse){
 
