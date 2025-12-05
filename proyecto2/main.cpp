@@ -12,7 +12,7 @@ int main(){
     bool end=false;
     int choice=0;
     string name;
-    cout<<"Welcome to ______ store!"<<endl<<"What is your name?"<<endl;
+    cout<<"Welcome to Game Universe store!"<<endl<<"What is your name?"<<endl;
     getline(cin,name);
     ShoppingCart cart(name);
     cout<<"Hello "<<name<<", What do you wanna do?"<<endl;
@@ -47,6 +47,7 @@ int main(){
 
             default:
                 cout<<"It is not a valid option :("<<endl;
+                
             break;
         }
     }

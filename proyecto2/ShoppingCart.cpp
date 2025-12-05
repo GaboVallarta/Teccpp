@@ -15,7 +15,7 @@ ShoppingCart::ShoppingCart(string client)
 
 float ShoppingCart::total()
 {
-    float result = 0;
+    float result = 0.0;
     for (int i = 0; i < size; i++)
     {
         result += products[i].subtotal();
@@ -52,7 +52,7 @@ void ShoppingCart::showProducts()
     cout<<"\t# products"<<"\t"<<"id"<<"\t"<<"name"<<"\t"<<"price"<<endl<<endl;
     for (int i = 0; i < size; i++)
     {
-        cout << this->products[i].getAmount() << "\t" << this->products[i].getId() << "\t" << this->products[i].getName() << "\t$" << this->products[i].getPrice() << endl;
+        if(this->products[i].getAmount()>0)cout << this->products[i].getAmount() << "\t" << this->products[i].getId() << "\t" << this->products[i].getName() << "\t$" << this->products[i].getPrice() << endl;
     }
     cout << "The total price is: " << this->total() <<"$"<< endl;
 }
@@ -93,7 +93,7 @@ int ShoppingCart::getProductNum(string id)
 
 void ShoppingCart::edit(Warehouse &warehouse)
 {
-    if (this->size == 0)
+    if (this->size == 0 || this->total()==0)
     {
         cout << "no products on the cart" << endl;
         return;
